@@ -26,20 +26,6 @@
 		
 	}
 	@$tab = $zap->fetch_assoc();
-	
-	
-	
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
 ?>
 
 <!DOCTYPE html>
