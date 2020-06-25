@@ -1,11 +1,9 @@
 <?php	
 	include("connect.php");
 	include("klasa.php");
-	@$zap = $conn->query($sql);
-	if ($zap==false)
-	{
-		
-	}
+	
+	$type=$_GET['type'];
+	
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +17,7 @@
     <meta name="keywords" content="księgarnia, internetowa, nowoczesna, książki, zakupy, online, miedzy, stronami, między, stronami">
 
     <link rel="icon" type="image/x-icon" href="img/logo.png">
-    <link rel="stylesheet" href="css2/style.css">
+    <link rel="stylesheet" href="css2/style.scss">
     <link rel="stylesheet" href="css2/bootstrap.min.css">
     <link rel="stylesheet" href="css2/owl.carousel.css">
 
@@ -51,7 +49,7 @@
     <div class="container sticky-top">
         <div class="row">
             <nav class="navbar navbar-expand-lg navbar-light bg-light col-12">
-                
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                     aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -59,22 +57,22 @@
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav">
                     <li class="nav-item">
-                      <a class="nav-link" href="#"> Strona główna <span class="sr-only">(current)</span></a>
+                      <a class="nav-link" href="index.php"> Strona główna <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#"> Promocje </a>
+                      <a class="nav-link" href="kategoria.php?type=books"> Promocje </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#"> Bestsellery </a>
+                      <a class="nav-link" href="kategoria.php?type=audiobooks"> Bestsellery </a>
                     </li>
 					<li class="nav-item">
-                      <a class="nav-link" href="#"> Nowości </a>
+                      <a class="nav-link" href="kategoria.php?type=books"> Książki papierowe </a>
                     </li>
 					<li class="nav-item">
-                      <a class="nav-link" href="#"> Ebooki </a>
+                      <a class="nav-link" href="kategoria.php?type=ebooks"> Ebooki </a>
                     </li>
 					<li class="nav-item">
-                      <a class="nav-link" href="#"> Audiobooki </a>
+                      <a class="nav-link" href="kategoria.php?type=audiobooks"> Audiobooki </a>
                     </li>
 					<li class="nav-item">
                       <a class="nav-link" href="#"> Konto </a>
@@ -87,57 +85,65 @@
             </nav>
         </div>
     </div>
-   
+
     <div class="container">
         <div class="row">
             <div class="col-md-4">
                 <ul class="navbar-nav" style="list-style: none;">
                     <li class="nav-item">
-                        <a class="nav-link" href="#"> Strona główna <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="index.php"> Strona główna <span class="sr-only">(current)</span></a>
                       </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#"> Promocje </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#"> Bestsellery </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#"> Nowości </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#"> Ebooki </a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link" href="#"> Audiobooki </a>
-                      </li>
+                       <li class="nav-item">
+                      <a class="nav-link" href="kategoria.php?type=books"> Promocje </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="kategoria.php?type=audiobooks"> Bestsellery </a>
+                    </li>
+					<li class="nav-item">
+                      <a class="nav-link" href="kategoria.php?type=books"> Książki papierowe </a>
+                    </li>
+					<li class="nav-item">
+                      <a class="nav-link" href="kategoria.php?type=ebooks"> Ebooki </a>
+                    </li>
+					<li class="nav-item">
+                      <a class="nav-link" href="kategoria.php?type=audiobooks"> Audiobooki </a>
+                    </li>
+					<li class="nav-item">
+                      <a class="nav-link" href="#"> Konto </a>
+                    </li>
+					<li class="nav-item">
+                      <a class="nav-link" href="#"> Koszyk </a>
+                    </li>
                 </ul>
             </div>
             <div class="col-md-8">
                 <h1>Rodzaj Książek</h1>
-                <div class="owl-carousel owl-theme">
-                    <?php
-                        $type = 'books';
-                        $sql = "SELECT * FROM $type";
-                        $zap = $conn->query($sql);
-                        while ($tab = $zap->fetch_assoc())
-                        {
-                            echo '
-                            
-                                <div class="item">
-                                    <div class="card" style="height: 250px;">
-                                        <img class="card-img-top" src="img/'.$tab['title'].'.png" alt="Card image cap" style="max-height:150px;">
-                                        <div class="card-body">
-                                            <a href="podglad.php?title='.$tab['title'].'&type='.$type.'" class="card-link text-center">'.$tab['title'].'</a><br />
-                                            <p style="font-weight:bold;">'.$tab['price'].'</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                
-                            ';
-                        }
-                    ?>
-                    </div>
+				<div class="owl-carousel owl-theme">
+                
+                  <?php
+					
+					$sql = "SELECT * FROM $type";
+					$zap = $conn->query($sql);
+					while ($tab = $zap->fetch_assoc())
+					{
+						echo '
+						
+							<div class="item">
+								<div class="card" style="height: 250px;">
+									<img class="card-img-top" src="img/'.$tab['title'].'.png" alt="Card image cap" style="max-height:150px;">
+									<div class="card-body">
+										<a href="podglad.php?title='.$tab['title'].'&type='.$type.'" class="card-link">'.$tab['title'].'</a><br />
+										<p style="font-weight:bold;">'.$tab['price'].'</p>
+									</div>
+								</div>
+							</div>
+							
+							
+						';
+					}
+				?>
+				
+                </div>
                 </div>
         </div>
     </div>
