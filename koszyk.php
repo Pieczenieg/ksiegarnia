@@ -1,10 +1,11 @@
-<?php	
-	session_start();
+<?php
+	
+	
 	
 	include("connect.php");
 	include("klasa.php");
-	
-	$type=$_GET['type'];
+	session_start();
+	$_SESSION['url'] = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
 	
 ?>
 
@@ -16,7 +17,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Między stronami - księgarnia internetowa</title>
     <meta name="description" content="Nowoczesna księgarnia internetowa.">
-    <meta name="keywords" content="księgarnia, internetowa, nowoczesna, książki, zakupy, online, miedzy, stronami, między, stronami">
+    <meta name="keywords"
+        content="księgarnia, internetowa, nowoczesna, książki, zakupy, online, miedzy, stronami, między, stronami">
 
     <link rel="icon" type="image/x-icon" href="img/logo.png">
     <link rel="stylesheet" href="css2/style.scss">
@@ -29,7 +31,7 @@
     <!--START NAVBAR-->
     <nav class="navbar navbar-light bg-light justify-content-between">
         <!--LOGO LEFT CORNER-->
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="index.php">
           <img src="img/logo.png" style="width: 70px; height: 50px;">
         </a>
         <form class="form-inline">
@@ -58,7 +60,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav">
-                    <li class="nav-item">
+                    <li class="nav-item active">
                       <a class="nav-link" href="index.php"> Strona główna <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
@@ -88,67 +90,61 @@
         </div>
     </div>
 
+    <!--START CONTENT-->
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
-                <ul class="navbar-nav" style="list-style: none;">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.php"> Strona główna <span class="sr-only">(current)</span></a>
-                      </li>
-                       <li class="nav-item">
-                      <a class="nav-link" href="kategoria.php?type=books"> Promocje </a>
+            <div class="col-md-8 col-sm-6" style="border: 3px solid;">
+           <?php
+				if (empty($_SESSION['koszyk']))
+				{
+					$_SESSION['koszyk'] = array();
+					echo 'Koszyk jest pusty';
+					
+					
+				}
+				
+				
+				foreach ($_SESSION['koszyk'] as $value)
+				{
+					echo' 
+						<div class="row m-3">
+							<div class="col-md-5 col-sm-4">
+								<img src="img/'.$value->tytul.'.png" style="max-width: 200px; max-height: 580px;">
+							</div>
+							
+							<div class="col-md-3 col-sm-2 " style="margin-top: 15%;">
+								<ul>
+									<li>'.$value->tytul.'</li>
+									<li>'.$value->author.'</li>
+									<li><input type = "number" value = "'.$value->ilosc.'" min=1 name = "ilosc"/></li>
+								</ul>
+							</div>
+							<div class="col-md-4 col-sm-2 text-center" style="margin-top: 15%;">
+								<form action = "del.php" method="GET">
+									<button style="float: right; width: 80px; height: 50px;" name = "del" type="submit" value="'.$value->tytul.'"><i class="fa fa-trash" aria-hidden="true"></i></button>
+									<span style=" line-height: 60px;">'.$value->cena.'</span>
+								</form>
+
+							</div>
+						</div>
+					';
+				}
+			?>
+            </div>
+        <!--Koniec Opisu (tu pentla kończy się)-->
+            <div class="col-md-4 col-sm-6 text-center" style="border: 3px solid;">
+                <ul style="list-style: none; margin-top: 30%;">
+                    <li>
+                    <a> Suma </a>
                     </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="kategoria.php?type=audiobooks"> Bestsellery </a>
-                    </li>
-					<li class="nav-item">
-                      <a class="nav-link" href="kategoria.php?type=books"> Książki papierowe </a>
-                    </li>
-					<li class="nav-item">
-                      <a class="nav-link" href="kategoria.php?type=ebooks"> Ebooki </a>
-                    </li>
-					<li class="nav-item">
-                      <a class="nav-link" href="kategoria.php?type=audiobooks"> Audiobooki </a>
-                    </li>
-					<li class="nav-item">
-                      <a class="nav-link" href="#"> Konto </a>
-                    </li>
-					<li class="nav-item">
-                      <a class="nav-link" href="#"> Koszyk </a>
+                    <li>
+                    <button><i class="fa fa-shopping-cart" aria-hidden="true" style="font-size:30px;"></i></button>
                     </li>
                 </ul>
             </div>
-            <div class="col-md-8">
-                <h1>Rodzaj Książek</h1>
-				<div class="owl-carousel owl-theme">
-                
-                  <?php
-					
-					$sql = "SELECT * FROM $type";
-					$zap = $conn->query($sql);
-					while ($tab = $zap->fetch_assoc())
-					{
-						echo '
-						
-							<div class="item">
-								<div class="card" style="height: 250px;">
-									<img class="card-img-top" src="img/'.$tab['title'].'.png" alt="Card image cap" style="max-height:150px;">
-									<div class="card-body">
-										<a href="podglad.php?title='.$tab['title'].'&type='.$type.'" class="card-link">'.$tab['title'].'</a><br />
-										<p style="font-weight:bold;">'.$tab['price'].'</p>
-									</div>
-								</div>
-							</div>
-							
-							
-						';
-					}
-				?>
-				
-                </div>
-                </div>
         </div>
     </div>
+    <!--END CONTENT-->
 
 
     <!-- Footer -->

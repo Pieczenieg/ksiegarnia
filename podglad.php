@@ -1,11 +1,30 @@
-<?php	
+<?php
 	session_start();
+	
+	if (!isset ($_GET['title']) || !isset($_GET['type']))
+	{
+		header('Location: index.php');
+		exit;
+	}
+	
+	$title = $_GET['title'];
+	$type = $_GET['type'];
+	
+	if (($type != "books") && ($type != "audiobooks") && ($type != "ebooks"))
+	{
+		header('Location: index.php');
+		exit;
+	}
+	
 	
 	include("connect.php");
 	include("klasa.php");
 	
-	$type=$_GET['type'];
+	$sql = "SELECT * FROM $type WHERE title = '$title'";
+
+	@$zap = $conn->query($sql);
 	
+	@$tab = $zap->fetch_assoc();
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +38,7 @@
     <meta name="keywords" content="księgarnia, internetowa, nowoczesna, książki, zakupy, online, miedzy, stronami, między, stronami">
 
     <link rel="icon" type="image/x-icon" href="img/logo.png">
-    <link rel="stylesheet" href="css2/style.scss">
+    <link rel="stylesheet" href="css2/style.css">
     <link rel="stylesheet" href="css2/bootstrap.min.css">
     <link rel="stylesheet" href="css2/owl.carousel.css">
 
@@ -38,11 +57,11 @@
         </form>
         <!--START MENU RIGHT CORNER-->
         <ul class="navbar-nav d-inline-block">
-            <li class="nav-item d-inline-block">
-                <a class="nav-link" href="#"><i class="fa fa-shopping-cart" aria-hidden="true" style="font-size:30px;"></i></a>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Współpraca<span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item d-inline-block" style="margin-left: 10px;">
-                <a class="nav-link" href="#"><i class="fa fa-user" aria-hidden="true" style="font-size:30px;"></i></a>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Oferta</a>
             </li>
             <!--END MENU RIGHT CORNER-->
         </ul>
@@ -51,7 +70,7 @@
     <div class="container sticky-top">
         <div class="row">
             <nav class="navbar navbar-expand-lg navbar-light bg-light col-12">
-
+                
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                     aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -61,7 +80,7 @@
                     <li class="nav-item">
                       <a class="nav-link" href="index.php"> Strona główna <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
+                     <li class="nav-item">
                       <a class="nav-link" href="kategoria.php?type=books"> Promocje </a>
                     </li>
                     <li class="nav-item">
@@ -88,67 +107,69 @@
         </div>
     </div>
 
+    <!--START CONTENT-->
     <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <ul class="navbar-nav" style="list-style: none;">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.php"> Strona główna <span class="sr-only">(current)</span></a>
-                      </li>
-                       <li class="nav-item">
-                      <a class="nav-link" href="kategoria.php?type=books"> Promocje </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="kategoria.php?type=audiobooks"> Bestsellery </a>
-                    </li>
-					<li class="nav-item">
-                      <a class="nav-link" href="kategoria.php?type=books"> Książki papierowe </a>
-                    </li>
-					<li class="nav-item">
-                      <a class="nav-link" href="kategoria.php?type=ebooks"> Ebooki </a>
-                    </li>
-					<li class="nav-item">
-                      <a class="nav-link" href="kategoria.php?type=audiobooks"> Audiobooki </a>
-                    </li>
-					<li class="nav-item">
-                      <a class="nav-link" href="#"> Konto </a>
-                    </li>
-					<li class="nav-item">
-                      <a class="nav-link" href="#"> Koszyk </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-md-8">
-                <h1>Rodzaj Książek</h1>
-				<div class="owl-carousel owl-theme">
-                
-                  <?php
+        <!--FIRST ROW FOR BOOK INFORMACION-->
+        <div class="row col-md-12">
+            <!--BOX FOR IMG book-->
+            <div class="col-md-3">
+				<?php
 					
-					$sql = "SELECT * FROM $type";
-					$zap = $conn->query($sql);
-					while ($tab = $zap->fetch_assoc())
-					{
-						echo '
-						
-							<div class="item">
-								<div class="card" style="height: 250px;">
-									<img class="card-img-top" src="img/'.$tab['title'].'.png" alt="Card image cap" style="max-height:150px;">
-									<div class="card-body">
-										<a href="podglad.php?title='.$tab['title'].'&type='.$type.'" class="card-link">'.$tab['title'].'</a><br />
-										<p style="font-weight:bold;">'.$tab['price'].'</p>
-									</div>
-								</div>
-							</div>
-							
-							
-						';
-					}
+					
+					
+					
+					echo'
+					<img src="img/'.$tab['title'].'.png" style="width: 150px; height: 240px;" alt="title">
+					';
 				?>
-				
+            </div>
+            <!--LIST BOX FOR INFORMACION-->
+            <div class="col-md-3">
+				<?php
+					echo '
+						<ul>
+							<li id="tittle">'.$tab['title'].'</li>
+							<li id="Author">'.$tab['autor'].'</li>
+							<li id="lang">Polski</li>
+							<li id="format">'.$type.'</li>
+						</ul>
+					';
+				?>
+            </div>
+            <!--BOX PRICE and BUY-->
+            <div class="col-md-6">
+                <!--PRICE-->
+                <div class="row text-center float">
+					<?php
+						echo '
+							<h3 id="price">'.$tab['price'].'</h3>
+						';
+					?>
                 </div>
+                <!--BUY-->
+                <div class="row">
+                    <button type="button" onclick="alert('Kupiłeś mnie pedale xD')"><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
                 </div>
+            </div>
+        </div>
+        <!--SECOND ROW FOR DISCRIPTION Book-->
+        <div class="row col-md-12">
+            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical
+            Latin literature from 45 BC,
+            making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia,
+            looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage,
+            and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem
+            Ipsum comes from sections
+            1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in
+            45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line
+            of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+
+            The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections
+            1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact
+            original form, accompanied by English versions from the 1914 translation by H. Rackham.
         </div>
     </div>
+    <!--END CONTENT-->
 
 
     <!-- Footer -->
