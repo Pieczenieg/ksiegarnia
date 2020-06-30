@@ -21,9 +21,10 @@
     
 
     <link rel="icon" type="image/x-icon" href="img/logo.png">
-    <link rel="stylesheet" href="css2/style.scss">
     <link rel="stylesheet" href="css2/bootstrap.min.css">
     <link rel="stylesheet" href="css2/owl.carousel.css">
+    <link rel="stylesheet" href="css2/style.css">
+
 
 </head>
 
@@ -40,11 +41,11 @@
         </form>
         <!--START MENU RIGHT CORNER-->
         <ul class="navbar-nav d-inline-block">
-            <li class="nav-item">
-                <a class="nav-link" href="#">Współpraca<span class="sr-only">(current)</span></a>
+            <li class="nav-item d-inline-block">
+                <a class="nav-link" href="koszyk.php"><i class="fa fa-shopping-cart" aria-hidden="true" style="font-size:30px;"></i></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Oferta</a>
+            <li class="nav-item d-inline-block" style="margin-left: 10px;">
+                <a class="nav-link" href="#"><i class="fa fa-user" aria-hidden="true" style="font-size:30px;"></i></a>
             </li>
             <!--END MENU RIGHT CORNER-->
         </ul>
@@ -116,8 +117,8 @@
     </div>
 
     <div class="container">
-        <div class="col-md-9">
-            <div class="row col-md-12">
+
+            <div class="row col-md-12 text-center">
                 <h1>Promocje</h1>
 				<div class="owl-carousel owl-theme">
 				<?php
@@ -130,7 +131,8 @@
 						
 							<div class="item">
 								<div class="card" style="height: 300px;">
-									<img class="card-img-top" src="img/'.$tab['title'].'.png" alt="Card image cap" style="max-height:150px;">
+									<img class="card-img-top" src="img/'.$tab['title'].'.png" alt="Card image cap" style="max-height:150px; width: 80%;
+                  margin-left: 20px;">
 									<div class="card-body">
 										<a href="podglad.php?title='.$tab['title'].'&type='.$type.'" class="card-link">'.$tab['title'].'</a><br />
 										<p style="font-weight:bold;">'.$tab['price'].'</p>
@@ -150,7 +152,7 @@
 				?>
 				</div>
             </div>
-            <div class="row col-md-12">
+            <div class="row col-md-12 text-center">
                 <h1>Bestsellery</h1>
                 <div class="owl-carousel owl-theme">
                     <?php
@@ -163,7 +165,8 @@
 						
 							<div class="item">
 								<div class="card" style="height: 300px;">
-									<img class="card-img-top" src="img/'.$tab['title'].'.png" alt="Card image cap" style="max-height:150px;">
+									<img class="card-img-top" src="img/'.$tab['title'].'.png" alt="Card image cap" style="max-height:150px; width: 80%;
+                  margin-left: 20px;">
 									<div class="card-body">
 										<a href="podglad.php?title='.$tab['title'].'&type='.$type.'" class="card-link">'.$tab['title'].'</a><br />
 										<p style="font-weight:bold;">'.$tab['price'].'</p>
@@ -183,7 +186,7 @@
 				?>
                 </div>
             </div>
-            <div class="row col-md-12">
+            <div class="row col-md-12 text-center">
                 <h1>Książki papierowe</h1>
                 <div class="owl-carousel owl-theme">
                     <?php
@@ -196,7 +199,8 @@
 						
 							<div class="item">
 								<div class="card" style="height: 300px;">
-									<img class="card-img-top" src="img/'.$tab['title'].'.png" alt="Card image cap" style="max-height:150px;">
+									<img class="card-img-top" src="img/'.$tab['title'].'.png" alt="Card image cap" style="max-height:150px; width: 80%;
+                  margin-left: 20px;">
 									<div class="card-body">
 										<a href="podglad.php?title='.$tab['title'].'&type='.$type.'" class="card-link">'.$tab['title'].'</a><br />
 										<p style="font-weight:bold;">'.$tab['price'].'</p>
@@ -216,7 +220,7 @@
 				?>
                 </div>
             </div>
-            <div class="row col-md-12">
+            <div class="row col-md-12 text-center">
                 <h1>Audiobooki</h1>
                 <div class="owl-carousel owl-theme">
                    <?php
@@ -229,7 +233,8 @@
 						
 							<div class="item">
 								<div class="card" style="height: 300px;">
-									<img class="card-img-top" src="img/'.$tab['title'].'.png" alt="Card image cap" style="max-height:150px;">
+									<img class="card-img-top" src="img/'.$tab['title'].'.png" alt="Card image cap" style="max-height:150px; width: 80%;
+                  margin-left: 20px;">
 									<div class="card-body">
 										<a href="podglad.php?title='.$tab['title'].'&type='.$type.'" class="card-link">'.$tab['title'].'</a><br />
 										<p style="font-weight:bold;">'.$tab['price'].'</p>
@@ -249,7 +254,7 @@
 				?>
                 </div>
             </div>
-            <div class="row col-md-12">
+            <div class="row col-md-12 text-center">
                 <h1>E-booki</h1>
                 <div class="owl-carousel owl-theme">
                     <?php
@@ -262,7 +267,8 @@
 						
 							<div class="item">
 								<div class="card" style="height: 300px;">
-									<img class="card-img-top" src="img/'.$tab['title'].'.png" alt="Card image cap" style="max-height:150px;">
+									<img class="card-img-top" src="img/'.$tab['title'].'.png" alt="Card image cap" style="max-height:150px; width: 80%;
+                  margin-left: 20px;">
 									<div class="card-body">
 										<a href="podglad.php?title='.$tab['title'].'&type='.$type.'" class="card-link">'.$tab['title'].'</a><br />
 										<p style="font-weight:bold;">'.$tab['price'].'</p>
@@ -281,7 +287,7 @@
 					}
 				?>
                 </div>
-            </div>
+            
             
 
         </div>
@@ -362,14 +368,15 @@
                 items:1
             },
             600:{
-                items:3
+                items:4
             },
             1000:{
-                items:4
+                items:5
             }
         }
     })
     </script>
+
 </body>
 
 </html>

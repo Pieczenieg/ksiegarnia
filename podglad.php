@@ -46,10 +46,10 @@
 </head>
 
 <body>
-    <!--START NAVBAR-->
-    <nav class="navbar navbar-light bg-light justify-content-between">
+     <!--START NAVBAR-->
+     <nav class="navbar navbar-light bg-light justify-content-between">
         <!--LOGO LEFT CORNER-->
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="index.php">
           <img src="img/logo.png" style="width: 70px; height: 50px;">
         </a>
         <form class="form-inline">
@@ -58,11 +58,11 @@
         </form>
         <!--START MENU RIGHT CORNER-->
         <ul class="navbar-nav d-inline-block">
-            <li class="nav-item">
-                <a class="nav-link" href="#">Współpraca<span class="sr-only">(current)</span></a>
+            <li class="nav-item d-inline-block">
+                <a class="nav-link" href="koszyk.php"><i class="fa fa-shopping-cart" aria-hidden="true" style="font-size:30px;"></i></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Oferta</a>
+            <li class="nav-item d-inline-block" style="margin-left: 10px;">
+                <a class="nav-link" href="#"><i class="fa fa-user" aria-hidden="true" style="font-size:30px;"></i></a>
             </li>
             <!--END MENU RIGHT CORNER-->
         </ul>
@@ -145,7 +145,7 @@
                 <div class="row text-center float">
 					
 						
-							<h3 id="price">'.$tab['price'].'</h3>
+							<h3 id="price">'.$tab['price'].'PLN</h3>
 						
 					
                 </div>

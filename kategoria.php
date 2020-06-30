@@ -18,10 +18,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Między stronami - księgarnia internetowa</title>
     <meta name="description" content="Nowoczesna księgarnia internetowa.">
-    <meta name="keywords" content="księgarnia, internetowa, nowoczesna, książki, zakupy, online, miedzy, stronami, między, stronami">
+    <meta name="keywords"
+        content="księgarnia, internetowa, nowoczesna, książki, zakupy, online, miedzy, stronami, między, stronami">
 
     <link rel="icon" type="image/x-icon" href="img/logo.png">
-    <link rel="stylesheet" href="css2/style.scss">
+    <link rel="stylesheet" href="css2/style.css">
     <link rel="stylesheet" href="css2/bootstrap.min.css">
     <link rel="stylesheet" href="css2/owl.carousel.css">
 
@@ -32,7 +33,7 @@
     <nav class="navbar navbar-light bg-light justify-content-between">
         <!--LOGO LEFT CORNER-->
         <a class="navbar-brand" href="index.php">
-          <img src="img/logo.png" style="width: 70px; height: 50px;">
+            <img src="img/logo.png" style="width: 70px; height: 50px;">
         </a>
         <form class="form-inline">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -41,7 +42,8 @@
         <!--START MENU RIGHT CORNER-->
         <ul class="navbar-nav d-inline-block">
             <li class="nav-item d-inline-block">
-                <a class="nav-link" href="#"><i class="fa fa-shopping-cart" aria-hidden="true" style="font-size:30px;"></i></a>
+                <a class="nav-link" href="koszyk.php"><i class="fa fa-shopping-cart" aria-hidden="true"
+                        style="font-size:30px;"></i></a>
             </li>
             <li class="nav-item d-inline-block" style="margin-left: 10px;">
                 <a class="nav-link" href="#"><i class="fa fa-user" aria-hidden="true" style="font-size:30px;"></i></a>
@@ -60,31 +62,32 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav">
-                    <li class="nav-item">
-                      <a class="nav-link" href="index.php"> Strona główna <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="kategoria.php?type=books"> Promocje </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="kategoria.php?type=audiobooks"> Bestsellery </a>
-                    </li>
-					<li class="nav-item">
-                      <a class="nav-link" href="kategoria.php?type=books"> Książki papierowe </a>
-                    </li>
-					<li class="nav-item">
-                      <a class="nav-link" href="kategoria.php?type=ebooks"> Ebooki </a>
-                    </li>
-					<li class="nav-item">
-                      <a class="nav-link" href="kategoria.php?type=audiobooks"> Audiobooki </a>
-                    </li>
-					<li class="nav-item">
-                      <a class="nav-link" href="#"> Konto </a>
-                    </li>
-					<li class="nav-item">
-                      <a class="nav-link" href="koszyk.php"> Koszyk </a>
-                    </li>
-                  </ul>
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.php"> Strona główna <span
+                                    class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="kategoria.php?type=books"> Promocje </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="kategoria.php?type=audiobooks"> Bestsellery </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="kategoria.php?type=books"> Książki papierowe </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="kategoria.php?type=ebooks"> Ebooki </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="kategoria.php?type=audiobooks"> Audiobooki </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"> Konto </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="koszyk.php"> Koszyk </a>
+                        </li>
+                    </ul>
                 </div>
             </nav>
         </div>
@@ -93,38 +96,39 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <ul class="navbar-nav" style="list-style: none;">
+                <ul class="navbar-nav" style="list-style: none; margin-top: 20px; ">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php"> Strona główna <span class="sr-only">(current)</span></a>
-                      </li>
-                       <li class="nav-item">
-                      <a class="nav-link" href="kategoria.php?type=books"> Promocje </a>
+                        <a class="nav-link" id="bok" href="index.php"> Strona główna <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="kategoria.php?type=audiobooks"> Bestsellery </a>
+                        <a class="nav-link"  id="bok" href="kategoria.php?type=books"> Promocje </a>
                     </li>
-					<li class="nav-item">
-                      <a class="nav-link" href="kategoria.php?type=books"> Książki papierowe </a>
+                    <li class="nav-item">
+                        <a class="nav-link" id="bok" href="kategoria.php?type=audiobooks"> Bestsellery </a>
                     </li>
-					<li class="nav-item">
-                      <a class="nav-link" href="kategoria.php?type=ebooks"> Ebooki </a>
+                    <li class="nav-item">
+                        <a class="nav-link" id="bok" href="kategoria.php?type=books"> Książki papierowe </a>
                     </li>
-					<li class="nav-item">
-                      <a class="nav-link" href="kategoria.php?type=audiobooks"> Audiobooki </a>
+                    <li class="nav-item">
+                        <a class="nav-link" id="bok" href="kategoria.php?type=ebooks"> Ebooki </a>
                     </li>
-					<li class="nav-item">
-                      <a class="nav-link" href="#"> Konto </a>
+                    <li class="nav-item">
+                        <a class="nav-link" id="bok" href="kategoria.php?type=audiobooks"> Audiobooki </a>
                     </li>
-					<li class="nav-item">
-                      <a class="nav-link" href="#"> Koszyk </a>
+                    <li class="nav-item">
+                        <a class="nav-link" id="bok" href="#"> Konto </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="bok" href="#"> Koszyk </a>
                     </li>
                 </ul>
             </div>
             <div class="col-md-8">
-                <h1>Rodzaj Książek</h1>
-				<div class="owl-carousel owl-theme">
-                
-                  <?php
+                <h1 style="margin-top: 20px;">Rodzaj Książek</h1>
+                <div class="row" style="margin-top: 20px;">
+                    <div class="owl-carousel owl-theme text-center">
+
+                        <?php
 					
 					$sql = "SELECT * FROM $type";
 					$zap = $conn->query($sql);
@@ -134,7 +138,8 @@
 						
 							<div class="item">
 								<div class="card" style="height: 300px;">
-									<img class="card-img-top" src="img/'.$tab['title'].'.png" alt="Card image cap" style="max-height:150px;">
+									<img class="card-img-top" src="img/'.$tab['title'].'.png" alt="Card image cap" style="max-height:150px; width: 80%;
+                  margin-left: 20px;">
 									<div class="card-body">
 										<a href="podglad.php?title='.$tab['title'].'&type='.$type.'" class="card-link">'.$tab['title'].'</a><br />
 										<p style="font-weight:bold;">'.$tab['price'].'</p>
@@ -152,9 +157,9 @@
 						';
 					}
 				?>
-				
+                    </div>
                 </div>
-                </div>
+            </div>
         </div>
     </div>
 
@@ -202,7 +207,26 @@
 
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
     <script src="js/all.js"></script>
+    <script>
+        $('.owl-carousel').owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: true,
+            responsive: {
+                0: {
+                    items: 2
+                },
+                600: {
+                    items: 3
+                },
+                1000: {
+                    items: 4
+                }
+            }
+        })
+    </script>
 
 </body>
 

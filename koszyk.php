@@ -21,7 +21,7 @@
         content="księgarnia, internetowa, nowoczesna, książki, zakupy, online, miedzy, stronami, między, stronami">
 
     <link rel="icon" type="image/x-icon" href="img/logo.png">
-    <link rel="stylesheet" href="css2/style.scss">
+    <link rel="stylesheet" href="css2/style.css">
     <link rel="stylesheet" href="css2/bootstrap.min.css">
     <link rel="stylesheet" href="css2/owl.carousel.css">
 
@@ -41,7 +41,7 @@
         <!--START MENU RIGHT CORNER-->
         <ul class="navbar-nav d-inline-block">
             <li class="nav-item d-inline-block">
-                <a class="nav-link" href="#"><i class="fa fa-shopping-cart" aria-hidden="true" style="font-size:30px;"></i></a>
+                <a class="nav-link" href="koszyk.php"><i class="fa fa-shopping-cart" aria-hidden="true" style="font-size:30px;"></i></a>
             </li>
             <li class="nav-item d-inline-block" style="margin-left: 10px;">
                 <a class="nav-link" href="#"><i class="fa fa-user" aria-hidden="true" style="font-size:30px;"></i></a>
@@ -93,7 +93,7 @@
     <!--START CONTENT-->
     <div class="container">
         <div class="row">
-            <div class="col-md-8 col-sm-6" style="border: 3px solid;">
+            <div class="col-md-8 col-sm-6">
            <?php
 				if (empty($_SESSION['i']))
 				{
@@ -138,7 +138,7 @@
 			?>
             </div>
         <!--Koniec Opisu (tu pentla kończy się)-->
-            <div class="col-md-4 col-sm-6 text-center" style="border: 3px solid;">
+            <div class="col-md-4 col-sm-6 text-center">
                 <ul style="list-style: none; margin-top: 30%;">
                     <li>
                     <a> Suma </a>
