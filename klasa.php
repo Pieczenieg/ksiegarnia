@@ -14,6 +14,7 @@
 			$this->rodzaj = $type;
 			$this->ilosc = $ile;
 			
+			
 		}
 	
 		

@@ -6,6 +6,8 @@
 	
 	$type=$_GET['type'];
 	
+	
+	
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +31,7 @@
     <!--START NAVBAR-->
     <nav class="navbar navbar-light bg-light justify-content-between">
         <!--LOGO LEFT CORNER-->
-        <a class="navbar-brand" href="index.html">
+        <a class="navbar-brand" href="index.php">
           <img src="img/logo.png" style="width: 70px; height: 50px;">
         </a>
         <form class="form-inline">
@@ -131,11 +133,17 @@
 						echo '
 						
 							<div class="item">
-								<div class="card" style="height: 250px;">
+								<div class="card" style="height: 300px;">
 									<img class="card-img-top" src="img/'.$tab['title'].'.png" alt="Card image cap" style="max-height:150px;">
 									<div class="card-body">
 										<a href="podglad.php?title='.$tab['title'].'&type='.$type.'" class="card-link">'.$tab['title'].'</a><br />
 										<p style="font-weight:bold;">'.$tab['price'].'</p>
+										<form action="kosz.php" method="get">
+											<input type="text" value = "'.$tab['title'].'" name = "title" style="display:none;" />
+											<input type="text" value = "'.$type.'" name = "type" style="display:none;" />
+											<input type = "number" min=1 value=1 name= "ilosc" style="width:25%;">
+											<input type = "submit" value = "Do koszyka" />
+										</form>
 									</div>
 								</div>
 							</div>

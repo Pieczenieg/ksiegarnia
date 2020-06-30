@@ -16,6 +16,7 @@
 		exit;
 	}
 	
+	$_SESSION['url'] = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
 	
 	include("connect.php");
 	include("klasa.php");
@@ -139,17 +140,26 @@
             <!--BOX PRICE and BUY-->
             <div class="col-md-6">
                 <!--PRICE-->
+				<?php
+				echo '
                 <div class="row text-center float">
-					<?php
-						echo '
+					
+						
 							<h3 id="price">'.$tab['price'].'</h3>
-						';
-					?>
+						
+					
                 </div>
                 <!--BUY-->
                 <div class="row">
-                    <button type="button" onclick="alert('Kupiłeś mnie pedale xD')"><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
+				<form action="kosz.php" method = "get">
+					<input type="text" value = "'.$tab['title'].'" name = "title" style="display:none;" />
+					<input type="text" value = "'.$type.'" name = "type" style="display:none;" />
+					<input type = "number" min=1 value=1 name= "ilosc" style="width:25%;">
+                    <button type="submit" value = "'.$tab['title'].'"><i class="fa fa-shopping-cart" aria-hidden="true"></i></button>
                 </div>
+				</form>
+				';
+				?>
             </div>
         </div>
         <!--SECOND ROW FOR DISCRIPTION Book-->

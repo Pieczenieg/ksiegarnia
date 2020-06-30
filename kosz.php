@@ -4,6 +4,13 @@ include("connect.php");
 include("klasa.php");
 session_start();
 
+if (!isset($_SESSION['i']))
+{
+	$_SESSION['i'] = 1;
+}
+
+
+
 $title = $_GET['title'];
 $type = $_GET['type'];
 $ilosc = $_GET['ilosc'];
@@ -14,6 +21,7 @@ $zap = $conn->query($sql);
 $tab = $zap->fetch_assoc();
 
 
+global $exists;
 
 $p = new produkt($tab['title'], $tab['autor'], $tab['price'], $type, $ilosc);
 
@@ -22,27 +30,26 @@ if (!isset($_SESSION['koszyk']))
 	$_SESSION['koszyk']=array();
 }
 
+$exists = true;
 
-
-foreach ($_SESSION['koszyk'] as $koszyk)
+for ($i=1;$i<$_SESSION['i'];$i++)
 {
-	if ($koszyk->tytul == $title)
+	if ($_SESSION['koszyk'.$i]->tytul == $title)
 	{
-		$koszyk->ilosc = $koszyk->ilosc + $ilosc;
-		$exists = true;
-	}
-	else
-	{
+		$_SESSION['koszyk'.$i]->ilosc = $_SESSION['koszyk'.$i]->ilosc + $ilosc;
 		$exists = false;
+		
 	}
+	
 }
 
 
-if ($exists == false)
+if ($exists == true)
 {
 	
-	$_SESSION['$title'] = $p;
-	array_push($_SESSION['koszyk'], $_SESSION['$title'] );
+	
+	$_SESSION['koszyk'.$i] = $p;
+	$_SESSION['i']++;
 }
 
 

@@ -95,39 +95,45 @@
         <div class="row">
             <div class="col-md-8 col-sm-6" style="border: 3px solid;">
            <?php
-				if (empty($_SESSION['koszyk']))
+				if (empty($_SESSION['i']))
 				{
-					$_SESSION['koszyk'] = array();
-					echo 'Koszyk jest pusty';
-					
-					
+					echo "Koszyk jest pusty";
 				}
-				
-				
-				foreach ($_SESSION['koszyk'] as $value)
+				else
 				{
+				for($i=1;$i<@$_SESSION['i']; $i++)
+				{
+					if (!isset($_SESSION['koszyk'.$i]))
+					{
+						
+					}
+					else
+					{
 					echo' 
 						<div class="row m-3">
 							<div class="col-md-5 col-sm-4">
-								<img src="img/'.$value->tytul.'.png" style="max-width: 200px; max-height: 580px;">
+								<img src="img/'.$_SESSION['koszyk'.$i]->tytul.'.png" style="max-width: 200px; max-height: 580px;">
 							</div>
 							
 							<div class="col-md-3 col-sm-2 " style="margin-top: 15%;">
 								<ul>
-									<li>'.$value->tytul.'</li>
-									<li>'.$value->author.'</li>
-									<li><input type = "number" value = "'.$value->ilosc.'" min=1 name = "ilosc"/></li>
+									<li>'.$_SESSION['koszyk'.$i]->tytul.'</li>
+									<li>'.$_SESSION['koszyk'.$i]->author.'</li>
+									<li><input type = "number" value = "'.$_SESSION['koszyk'.$i]->ilosc.'" min="1" name = "ilosc"/></li>
+									<li>'.$_SESSION['koszyk'.$i]->tytul.'</li>
 								</ul>
 							</div>
 							<div class="col-md-4 col-sm-2 text-center" style="margin-top: 15%;">
 								<form action = "del.php" method="GET">
-									<button style="float: right; width: 80px; height: 50px;" name = "del" type="submit" value="'.$value->tytul.'"><i class="fa fa-trash" aria-hidden="true"></i></button>
-									<span style=" line-height: 60px;">'.$value->cena.'</span>
+									<button style="float: right; width: 80px; height: 50px;" name = "del" type="submit" value="'.$_SESSION['koszyk'.$i]->tytul.'"><i class="fa fa-trash" aria-hidden="true"></i></button>
+									<span style=" line-height: 60px;">'.$_SESSION['koszyk'.$i]->cena.'</span>
 								</form>
 
 							</div>
 						</div>
 					';
+					}
+				}
 				}
 			?>
             </div>
